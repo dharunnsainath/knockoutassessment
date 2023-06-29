@@ -1,0 +1,50 @@
+<html>
+<html>
+<head>
+  <title>Knockout.js and Require.js Project</title>
+  
+</head>
+<body>
+  <h1>Knockout.js and Require.js Project</h1>
+
+  <div id="productApp">
+    <button data-bind="click: addProductForm" > Add Product </button>
+    <!-- <button data-bind="click: submitProducts">Submit</button> -->
+    <hr>
+    <h2>Product List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Quantity</th>
+          <th>Availability</th>
+          <th>Discount Types</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: products">
+        <tr>
+          <td data-bind="text: productId"></td>
+          <td data-bind="text: name"></td>
+          <td data-bind="text: type"></td>
+          <td data-bind="text: quantity"></td>
+          <td data-bind="text: availability"></td>
+          <td data-bind="text: discountTypes.join(',')"></td>
+          <td><button data-bind="click: $parent.removeProduct">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+   
+    <!-- ko foreach: productForms -->
+    <product-form data-bind="event: { onProductAdded: $parent.onProductAdded }" params="'onProductAdded': $parent.onProductAdded,'addProductForm': $parent.addProductForm" ></product-form>
+    <!-- /ko -->
+  
+
+</div>
+
+  <script data-main="scripts/main" src="scripts/require.js"></script>
+</body>
+</html>
